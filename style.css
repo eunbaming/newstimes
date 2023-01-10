@@ -31,7 +31,6 @@
   padding: 10px;
 }
 
-
 .sidenav {
   height: 100%;
   width: 0;
@@ -43,9 +42,6 @@
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 .sidenav .closebtn {
   position: absolute;
@@ -55,13 +51,43 @@
   font-size: 36px;
   color: #000;
 }
-.sidenav button {
-  display: block;
-  padding: 8px;
+.side-menu-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.side-menu-list button {
   border: none;
   background: none;
-
+  margin: 8px;
+  width: 120px;
 }
 .sidenav button:hover {
   background-color: beige;
+  border-radius: 3px;
+}
+.side-button {
+  font-size: 30px;
+  cursor: pointer;
+  margin-left: 1em;
+  visibility: hidden;
+}
+.icon-btn {
+  margin-left: 1em;
+  margin-right: 0.5em;
+  cursor: pointer;
+}
+.search-btn {
+  border: none;
+  background: none;
+  background-color: burlywood;
+  border-radius: 5px;
+  font-size: 18px;
+  color: #fff;
+}
+
+@media screen and (max-width:48rem){
+  .side-button {
+    visibility: visible;
+  }
 }
