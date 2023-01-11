@@ -1,28 +1,39 @@
 let news = []
 let menus = document.querySelectorAll(".menus button")
 menus.forEach((menu)=>menu.addEventListener("click", (event)=>getNewsByTopic(event)))
+let searchButton = document.getElementById("search-btn")
 
 const getLatesNews = async()=>{
   let url = new URL(`https://api.newscatcherapi.com/v2/latest_headlines?countries=US&topic=business&page_size=10`)
-  let header = new Headers({"x-api-key" : "REUsfWpb76O9EMwxQBX4V2YdzT0_XIcpsGSkO08fGHg"})
+  let header = new Headers({"x-api-key" : "riwPQitZ5-hs2euwt5GyQjvarI4srEi9QuaspdpE_KQ"})
   let response = await fetch(url,{headers : header})
   let data = await response.json()
   console.log("data는", data)
   news = data.articles
   render()
 }
-getLatesNews()
 
 const getNewsByTopic = async(event)=>{
-  console.log(event.target.textContent)
-
+  // console.log(event.target.textContent)
   let topic = event.target.textContent.toLowerCase()
   let url = new URL(`https://api.newscatcherapi.com/v2/latest_headlines?countries=US&topic=${topic}&page_size=10`)
-  let header = new Headers({"x-api-key" : "REUsfWpb76O9EMwxQBX4V2YdzT0_XIcpsGSkO08fGHg"})
+  let header = new Headers({"x-api-key" : "riwPQitZ5-hs2euwt5GyQjvarI4srEi9QuaspdpE_KQ"})
   let response = await fetch(url,{headers : header})
   let data = await response.json()
   news = data.articles
   render()
+}
+
+const getNewsByKeyword = async()=>{
+  let keyword = document.getElementById("search-input").value
+  // console.log("keyword", keyword)
+  let url = new URL(`https://api.newscatcherapi.com/v2/search?q=${keyword}&countries=US&page_size=10`)
+  let header = new Headers({"x-api-key" : "riwPQitZ5-hs2euwt5GyQjvarI4srEi9QuaspdpE_KQ"})
+  let response = await fetch(url,{headers: header})
+  let data = await response.json()
+  news = data.articles
+  render()
+  console.log("data는", data)
 }
 
 const render = ()=>{
@@ -67,3 +78,6 @@ function openSearchBox(){
     searchArea.style.display = "inline"
   }
 }
+
+searchButton.addEventListener("click", getNewsByKeyword)
+getLatesNews()
