@@ -5,12 +5,25 @@ let searchButton = document.getElementById("search-btn")
 let url
 
 const getNews = async()=>{
-  let header = new Headers({"x-api-key" : "riwPQitZ5-hs2euwt5GyQjvarI4srEi9QuaspdpE_KQ"})
-  let response = await fetch(url,{headers : header})
-  let data = await response.json()
-  console.log("data는", data)
-  news = data.articles
-  render()
+  try {
+    let header = new Headers({"x-api-key" : "riwPQitZ5-hs2euwt5GyQjvarI4srEi9QuaspdpE_KQ"})
+    let response = await fetch(url,{headers : header})
+    let data = await response.json()
+    console.log("data는", data)
+    console.log("response는", response)
+    if(response.status == 200){
+      if(data.total_hits == 0){
+        throw new Error("No matches for your search")
+      }
+      news = data.articles
+      render()
+    }else {
+      throw new Error(data.message)
+    }
+  }catch(error) {
+    console.log("에러 내용은", error.message)
+    errorRender(error.message)
+  }
 }
 
 const getLatesNews = async()=>{
@@ -58,6 +71,13 @@ const render = ()=>{
   }).join("")
 
   document.getElementById("news-board").innerHTML = newsHTML
+}
+
+const errorRender = (message)=>{
+  let errorHTML = `<div class="alert alert-danger text-center" role="alert">${message}
+</div>`
+
+  document.getElementById("news-board").innerHTML = errorHTML
 }
 
 function openNav(){
