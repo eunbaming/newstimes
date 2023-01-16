@@ -85,6 +85,24 @@
   font-size: 18px;
   color: #fff;
 }
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+}
+.page-link {
+  color: burlywood;
+  border: 1px solid burlywood;
+}
+.page-link:hover {
+  background-color: burlywood;
+  color: #fff;
+}
+.page-item.active .page-link {
+  color: #fff;
+  background-color: burlywood;
+  border-color: burlywood;
+}
 
 @media screen and (max-width:48rem){
   .side-button {

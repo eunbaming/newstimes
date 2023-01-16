@@ -1,4 +1,6 @@
 let news = []
+let page = 1
+let total_pages = 0
 let menus = document.querySelectorAll(".menus button")
 menus.forEach((menu)=>menu.addEventListener("click", (event)=>getNewsByTopic(event)))
 let searchButton = document.getElementById("search-btn")
@@ -6,7 +8,9 @@ let url
 
 const getNews = async()=>{
   try {
-    let header = new Headers({"x-api-key" : "riwPQitZ5-hs2euwt5GyQjvarI4srEi9QuaspdpE_KQ"})
+    let header = new Headers({"x-api-key" : "AO2Iq3qoZLk8gy6afW63YQkg-FWzzencatowJPmpPF0"})
+    url.searchParams.set('page', page) // &page=page
+    // console.log(url)
     let response = await fetch(url,{headers : header})
     let data = await response.json()
     console.log("data는", data)
@@ -16,7 +20,10 @@ const getNews = async()=>{
         throw new Error("No matches for your search")
       }
       news = data.articles
+      page = data.page
+      total_pages = data.total_pages
       render()
+      pagination()
     }else {
       throw new Error(data.message)
     }
@@ -78,6 +85,46 @@ const errorRender = (message)=>{
 </div>`
 
   document.getElementById("news-board").innerHTML = errorHTML
+}
+
+const pagination = ()=>{
+  let paginationHTML = ``
+  let pageGroup = Math.ceil(page / 5)
+  let last = pageGroup * 5
+  if(last > total_pages){
+    last = total_pages
+  }
+  let first = last - 4 <= 0 ? 1 : last - 4
+
+  if(first >= 6) {
+    paginationHTML = `<li class="page-item">
+  <a class="page-link" href="#" aria-label="Previous" onclick="moveToPage(1)">&lt;&lt;</a>
+</li>
+  <li class="page-item">
+<a class="page-link" href="#" aria-label="Previous" onclick="moveToPage(${page-1})">&lt;</a>
+</li>`
+  }
+
+  for(let i=first; i<=last; i++){
+    paginationHTML += `<li class="page-item ${page===i?"active":""}"><a class="page-link" href="#" onclick="moveToPage(${i})">${i}</a></li>`
+  }
+
+  if(last < total_pages) {
+    paginationHTML += `<li class="page-item">
+  <a class="page-link" href="#" aria-label="Next" onclick="moveToPage(${page+1})">&gt;</a>
+</li>
+  <li class="page-item">
+<a class="page-link" href="#" aria-label="Next" onclick="moveToPage(total_pages)">&gt;&gt;</a>
+</li>`
+  }
+
+  document.querySelector(".pagination").innerHTML = paginationHTML
+}
+
+const moveToPage = (pageNum)=>{
+  page = pageNum
+  console.log(page)
+  getNews()
 }
 
 function openNav(){
