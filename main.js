@@ -3,6 +3,8 @@ let page = 1
 let total_pages = 0
 let menus = document.querySelectorAll(".menus button")
 menus.forEach((menu)=>menu.addEventListener("click", (event)=>getNewsByTopic(event)))
+let sideMenus = document.querySelectorAll(".side-menu-list button")
+sideMenus.forEach((menu)=>menu.addEventListener("click", (event)=>getNewsByTopic(event)))
 let searchButton = document.getElementById("search-btn")
 let url
 

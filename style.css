@@ -85,6 +85,7 @@
   font-size: 18px;
   color: #fff;
 }
+
 .pagination {
   display: flex;
   justify-content: center;
@@ -107,5 +108,8 @@
 @media screen and (max-width:48rem){
   .side-button {
     visibility: visible;
+  }
+  .menus {
+    display: none;
   }
 }
