@@ -5,6 +5,7 @@
 }
 .head-line svg {
   width: 430px;
+  cursor: pointer;
 }
 .menus {
   margin-top: 1em;

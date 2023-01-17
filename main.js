@@ -14,6 +14,10 @@ document.getElementById("search-input").addEventListener("keyup", (event) => {
   }
 })
 
+function pageReload() {
+  location.reload()
+}
+
 const getNews = async()=>{
   try {
     let header = new Headers({"x-api-key" : "lo7L8FrJHAJHfobdGclfo38dr6LUzsqhfOABD3ihWl0"})
