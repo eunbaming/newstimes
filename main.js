@@ -8,9 +8,15 @@ sideMenus.forEach((menu)=>menu.addEventListener("click", (event)=>getNewsByTopic
 let searchButton = document.getElementById("search-btn")
 let url
 
+document.getElementById("search-input").addEventListener("keyup", (event) => {
+  if (event.keyCode === 13){
+    getNewsByKeyword(event)
+  }
+})
+
 const getNews = async()=>{
   try {
-    let header = new Headers({"x-api-key" : "AO2Iq3qoZLk8gy6afW63YQkg-FWzzencatowJPmpPF0"})
+    let header = new Headers({"x-api-key" : "lo7L8FrJHAJHfobdGclfo38dr6LUzsqhfOABD3ihWl0"})
     url.searchParams.set('page', page) // &page=page
     // console.log(url)
     let response = await fetch(url,{headers : header})
@@ -143,6 +149,7 @@ function openSearchBox(){
     searchArea.style.display = "inline"
   }
 }
+
 
 searchButton.addEventListener("click", getNewsByKeyword)
 getLatesNews()

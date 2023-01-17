@@ -86,6 +86,14 @@
   color: #fff;
 }
 
+.search-area input:focus {
+  border: 1px solid burlywood;
+  outline: none;
+}
+.search-area input:focus::placeholder {
+  visibility: hidden;
+}
+
 .pagination {
   display: flex;
   justify-content: center;
