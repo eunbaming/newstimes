@@ -117,7 +117,7 @@
   border-color: burlywood;
 }
 
-@media screen and (max-width:48rem){
+@media screen and (max-width: 48rem) {
   .side-button {
     visibility: visible;
   }

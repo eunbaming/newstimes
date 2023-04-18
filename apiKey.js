@@ -1,3 +1,3 @@
 const config = {
-	apiKey: "hUPqLD-FjrLIR9GPpwZOJh4iClTmoxZLnjczShd_jqg"
-}
+  apiKey: "7lGLBxAv1xxQwwtIyktpJ-SKHHAmdaahOQPtkg7J6Sw",
+};
