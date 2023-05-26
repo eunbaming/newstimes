@@ -1,7 +1,6 @@
 # Newstimes 웹사이트
 
-
-실제 뉴스타임즈 웹사이트를 참고하여 뉴스 웹페이지 구축
+<
 
 ![Newstimes](https://user-images.githubusercontent.com/110072947/221774080-c104ff6d-b018-4622-b707-ccaa42fc054c.png)
 
@@ -12,6 +11,7 @@
 
 ### 개발 목표
 
+실제 뉴스타임즈 웹사이트를 참고하여 뉴스 웹페이지 구축 및
 api의 의미와 api를 다루는 방법 이해를 기반으로 한 웹페이지 구축 및 Bootstrap과 Media Query을 이용하여 반응형으로 개발
 
 <br/>
@@ -69,7 +69,7 @@ const getNews = async()=>{
 
 <br/>
 
-+ 페이지네이션 개발
++ 페이지네이션 
 
 <a href="#"><img src="https://user-images.githubusercontent.com/110072947/221776337-34933c3d-43ff-461d-a937-95af9cec5f0e.png" width="400"></a>
 <a href="#"><img src="https://user-images.githubusercontent.com/110072947/221776351-a7bb7080-c96f-461b-9e15-9f60ffd37831.png" width="400"></a>
